@@ -10,10 +10,11 @@
 		<version>2.0.4.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
+	
 	<groupId>com.pco.asanarz</groupId>
 	<artifactId>AsanArzServer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Archetype - AsanArzServer</name>
+	<name>AsanArzServer</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -41,7 +42,31 @@
 			<artifactId>postgresql</artifactId>
 			<version>42.1.4</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>com.pco.asanarz</groupId>
+			<artifactId>AsanArzDatabase</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
+<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<jvmArguments>
+						-Dserver.port=${serverPort}
+					</jvmArguments>
+					<devmodeArgs>
+						<arg>-bindAddress</arg>
+						<arg>0.0.0.0</arg>
+					</devmodeArgs>
+				</configuration>
+			</plugin>
+	
+		</plugins>
+	</build>
 
 </project>
